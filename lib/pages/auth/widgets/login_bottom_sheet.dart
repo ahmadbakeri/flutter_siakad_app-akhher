@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_siakad_app/bloc/login/login_bloc.dart';
+import 'package:flutter_siakad_app/data/datasources/auth_local_datasource.dart';
 import 'package:flutter_siakad_app/data/models/request/auth_request_model.dart';
 import 'package:flutter_siakad_app/pages/mahasiswa/mahasiswa_page.dart';
 
@@ -88,9 +89,11 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
               const SizedBox(height: 24.0),
               BlocListener<LoginBloc, LoginState>(
                 listener: (context, state) {
+                  print('State = $state');
                   state.maybeWhen(
                     orElse: () {},
                     loaded: (data) {
+                      AuthLocalDatasource().saveAuthData(data);
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) {
                         return const MahasiswaPage();

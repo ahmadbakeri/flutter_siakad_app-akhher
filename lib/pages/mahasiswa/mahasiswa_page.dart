@@ -4,6 +4,7 @@ import 'package:flutter_siakad_app/pages/mahasiswa/setting_page.dart';
 
 import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
+import '../profile/profile_page.dart';
 
 class MahasiswaPage extends StatefulWidget {
   const MahasiswaPage({super.key});
@@ -26,7 +27,7 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
     const Center(
       child: Text('Schedule'),
     ),
-    const SettingPage(),
+    const ProfilePage(role: 'Mahasiswa'),
   ];
 
   @override
