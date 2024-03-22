@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_siakad_app/pages/mahasiswa/dashboard_page.dart';
-import 'package:flutter_siakad_app/pages/mahasiswa/setting_page.dart';
-
 import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
 import '../profile/profile_page.dart';
+import 'course_schedule_page.dart';
+import 'dashboard_page.dart';
 
-class MahasiswaPage extends StatefulWidget {
-  const MahasiswaPage({super.key});
+class StudentPage extends StatefulWidget {
+  const StudentPage({super.key});
 
   @override
-  State<MahasiswaPage> createState() => _MahasiswaPageState();
+  State<StudentPage> createState() => _MahasiswaPageState();
 }
 
-class _MahasiswaPageState extends State<MahasiswaPage> {
+class _MahasiswaPageState extends State<StudentPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -24,9 +23,7 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
 
   final List<Widget> _pages = [
     const DashboardPage(),
-    const Center(
-      child: Text('Schedule'),
-    ),
+    const CourseSchedulePage(),
     const ProfilePage(role: 'Mahasiswa'),
   ];
 

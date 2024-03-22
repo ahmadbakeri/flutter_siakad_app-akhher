@@ -28,7 +28,8 @@ class AuthLocalDatasource {
   Future<bool> isLogin() async {
     final pref = await SharedPreferences.getInstance();
     final authJson = pref.getString('auth') ?? '';
-    print(authJson);
+    // monitor user's json
+    // print(authJson);
     return authJson.isNotEmpty;
   }
 
