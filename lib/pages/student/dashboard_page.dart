@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-
 import '../../common/constants/colors.dart';
 import '../../common/constants/images.dart';
 import '../../common/widgets/menu_card.dart';
 import '../../common/widgets/search_input.dart';
+import 'attendance_page.dart';
+import 'course_grade_page.dart';
+import 'course_schedule_page.dart';
+import 'credit_hours_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -34,7 +37,13 @@ class _DashboardPageState extends State<DashboardPage> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AttendancePage(),
+                        ));
+                  },
                   icon: const Icon(
                     Icons.qr_code_scanner,
                     color: ColorName.primary,
@@ -59,21 +68,39 @@ class _DashboardPageState extends State<DashboardPage> {
         MenuCard(
           label: 'Kartu Hasil\nStudi',
           backgroundColor: const Color(0xff686BFF),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CreditHoursPage(),
+                ));
+          },
           imagePath: Images.khs,
         ),
         const SizedBox(height: 40.0),
         MenuCard(
           label: 'Nilai\nMata Kuliah',
           backgroundColor: const Color(0xffFFB023),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CourseGradePage(),
+                ));
+          },
           imagePath: Images.nMatkul,
         ),
         const SizedBox(height: 40.0),
         MenuCard(
           label: 'Jadwal\nMata Kuliah',
           backgroundColor: const Color(0xffFF68F0),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CourseSchedulePage(),
+                ));
+          },
           imagePath: Images.jadwal,
         ),
       ],

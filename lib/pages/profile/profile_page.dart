@@ -31,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          const SizedBox(height: 60.0),
+          const SizedBox(height: 30.0),
           Container(
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10.0)),
