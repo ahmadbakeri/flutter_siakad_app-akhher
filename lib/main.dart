@@ -5,6 +5,8 @@ import 'package:flutter_siakad_app/pages/student/student_page.dart';
 import 'dart:io';
 import 'bloc/credits/credits_bloc.dart';
 import 'bloc/schedules/schedules_bloc.dart';
+import 'bloc/subjects/subjects_bloc.dart';
+import 'bloc/users/users_bloc.dart';
 import 'pages/auth/splash_page.dart';
 
 void main() {
@@ -33,6 +35,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SchedulesBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SubjectsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => UsersBloc(),
         ),
       ],
       child: MaterialApp(

@@ -4,6 +4,7 @@ import '../../common/constants/icons.dart';
 import '../profile/profile_page.dart';
 import 'course_schedule_page.dart';
 import 'dashboard_page.dart';
+import 'subject_page.dart';
 
 class StudentPage extends StatefulWidget {
   const StudentPage({super.key});
@@ -23,7 +24,7 @@ class _MahasiswaPageState extends State<StudentPage> {
 
   final List<Widget> _pages = [
     const DashboardPage(),
-    const CourseSchedulePage(),
+    const SubjectPage(),
     const ProfilePage(role: 'Mahasiswa'),
   ];
 

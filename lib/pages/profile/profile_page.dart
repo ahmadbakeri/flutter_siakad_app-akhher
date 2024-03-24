@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 
 import '../../bloc/logout/logout_bloc.dart';
+import '../../bloc/users/users_bloc.dart';
 import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
 import '../../common/widgets/custom_scaffold.dart';
@@ -23,6 +24,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UsersBloc>().add(const UsersEvent.getUser());
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -49,57 +56,69 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               children: [
                 const SizedBox(height: 22.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(50.0)),
-                      child: Image.network(
-                        'https://avatars.githubusercontent.com/u/147062436',
-                        width: 72.0,
-                        height: 72.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(width: 10.0),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 11.0, vertical: 2.0),
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(16.0)),
-                            border: Border.all(color: ColorName.primary),
-                          ),
-                          child: Text(
-                            widget.role,
-                            style: const TextStyle(
-                              color: ColorName.primary,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
+                BlocBuilder<UsersBloc, UsersState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      orElse: () {
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                      loaded: (user) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(50.0)),
+                              child: Image.network(
+                                'https://avatars.githubusercontent.com/u/147062436',
+                                width: 72.0,
+                                height: 72.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                        ),
-                        const Text(
-                          "Hery Hermawan",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: ColorName.primary,
-                          ),
-                        ),
-                        const Text(
-                          "Minggu, 17 Maret 2024",
-                          style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                            const SizedBox(width: 10.0),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 11.0, vertical: 2.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(16.0)),
+                                    border:
+                                        Border.all(color: ColorName.primary),
+                                  ),
+                                  child: Text(
+                                    widget.role,
+                                    style: const TextStyle(
+                                      color: ColorName.primary,
+                                      fontSize: 8,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                const Text(
+                                  "Hery Hermawan",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: ColorName.primary,
+                                  ),
+                                ),
+                                const Text(
+                                  "Minggu, 17 Maret 2024",
+                                  style: TextStyle(
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                 ),
                 const SizedBox(height: 5.0),
                 Dash(

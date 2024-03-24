@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'credits_bloc.dart';
+part of 'users_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CreditsEvent {
+mixin _$UsersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getCredits,
+    required TResult Function() getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getCredits,
+    TResult? Function()? getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getCredits,
+    TResult Function()? getUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetCredits value) getCredits,
+    required TResult Function(_GetUser value) getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetCredits value)? getCredits,
+    TResult? Function(_GetUser value)? getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetCredits value)? getCredits,
+    TResult Function(_GetUser value)? getUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreditsEventCopyWith<$Res> {
-  factory $CreditsEventCopyWith(
-          CreditsEvent value, $Res Function(CreditsEvent) then) =
-      _$CreditsEventCopyWithImpl<$Res, CreditsEvent>;
+abstract class $UsersEventCopyWith<$Res> {
+  factory $UsersEventCopyWith(
+          UsersEvent value, $Res Function(UsersEvent) then) =
+      _$UsersEventCopyWithImpl<$Res, UsersEvent>;
 }
 
 /// @nodoc
-class _$CreditsEventCopyWithImpl<$Res, $Val extends CreditsEvent>
-    implements $CreditsEventCopyWith<$Res> {
-  _$CreditsEventCopyWithImpl(this._value, this._then);
+class _$UsersEventCopyWithImpl<$Res, $Val extends UsersEvent>
+    implements $UsersEventCopyWith<$Res> {
+  _$UsersEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$CreditsEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$UsersEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -97,7 +97,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'CreditsEvent.started()';
+    return 'UsersEvent.started()';
   }
 
   @override
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getCredits,
+    required TResult Function() getUser,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getCredits,
+    TResult? Function()? getUser,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getCredits,
+    TResult Function()? getUser,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +144,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetCredits value) getCredits,
+    required TResult Function(_GetUser value) getUser,
   }) {
     return started(this);
   }
@@ -153,7 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetCredits value)? getCredits,
+    TResult? Function(_GetUser value)? getUser,
   }) {
     return started?.call(this);
   }
@@ -162,7 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetCredits value)? getCredits,
+    TResult Function(_GetUser value)? getUser,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,40 +172,40 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements CreditsEvent {
+abstract class _Started implements UsersEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetCreditsImplCopyWith<$Res> {
-  factory _$$GetCreditsImplCopyWith(
-          _$GetCreditsImpl value, $Res Function(_$GetCreditsImpl) then) =
-      __$$GetCreditsImplCopyWithImpl<$Res>;
+abstract class _$$GetUserImplCopyWith<$Res> {
+  factory _$$GetUserImplCopyWith(
+          _$GetUserImpl value, $Res Function(_$GetUserImpl) then) =
+      __$$GetUserImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetCreditsImplCopyWithImpl<$Res>
-    extends _$CreditsEventCopyWithImpl<$Res, _$GetCreditsImpl>
-    implements _$$GetCreditsImplCopyWith<$Res> {
-  __$$GetCreditsImplCopyWithImpl(
-      _$GetCreditsImpl _value, $Res Function(_$GetCreditsImpl) _then)
+class __$$GetUserImplCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$GetUserImpl>
+    implements _$$GetUserImplCopyWith<$Res> {
+  __$$GetUserImplCopyWithImpl(
+      _$GetUserImpl _value, $Res Function(_$GetUserImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetCreditsImpl implements _GetCredits {
-  const _$GetCreditsImpl();
+class _$GetUserImpl implements _GetUser {
+  const _$GetUserImpl();
 
   @override
   String toString() {
-    return 'CreditsEvent.getCredits()';
+    return 'UsersEvent.getUser()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetCreditsImpl);
+        (other.runtimeType == runtimeType && other is _$GetUserImpl);
   }
 
   @override
@@ -215,29 +215,29 @@ class _$GetCreditsImpl implements _GetCredits {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getCredits,
+    required TResult Function() getUser,
   }) {
-    return getCredits();
+    return getUser();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getCredits,
+    TResult? Function()? getUser,
   }) {
-    return getCredits?.call();
+    return getUser?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getCredits,
+    TResult Function()? getUser,
     required TResult orElse(),
   }) {
-    if (getCredits != null) {
-      return getCredits();
+    if (getUser != null) {
+      return getUser();
     }
     return orElse();
   }
@@ -246,45 +246,45 @@ class _$GetCreditsImpl implements _GetCredits {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetCredits value) getCredits,
+    required TResult Function(_GetUser value) getUser,
   }) {
-    return getCredits(this);
+    return getUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetCredits value)? getCredits,
+    TResult? Function(_GetUser value)? getUser,
   }) {
-    return getCredits?.call(this);
+    return getUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetCredits value)? getCredits,
+    TResult Function(_GetUser value)? getUser,
     required TResult orElse(),
   }) {
-    if (getCredits != null) {
-      return getCredits(this);
+    if (getUser != null) {
+      return getUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetCredits implements CreditsEvent {
-  const factory _GetCredits() = _$GetCreditsImpl;
+abstract class _GetUser implements UsersEvent {
+  const factory _GetUser() = _$GetUserImpl;
 }
 
 /// @nodoc
-mixin _$CreditsState {
+mixin _$UsersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Credit> credits) loaded,
+    required TResult Function(UserResponseModel user) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -292,7 +292,7 @@ mixin _$CreditsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Credit> credits)? loaded,
+    TResult? Function(UserResponseModel user)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -300,7 +300,7 @@ mixin _$CreditsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Credit> credits)? loaded,
+    TResult Function(UserResponseModel user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -333,16 +333,16 @@ mixin _$CreditsState {
 }
 
 /// @nodoc
-abstract class $CreditsStateCopyWith<$Res> {
-  factory $CreditsStateCopyWith(
-          CreditsState value, $Res Function(CreditsState) then) =
-      _$CreditsStateCopyWithImpl<$Res, CreditsState>;
+abstract class $UsersStateCopyWith<$Res> {
+  factory $UsersStateCopyWith(
+          UsersState value, $Res Function(UsersState) then) =
+      _$UsersStateCopyWithImpl<$Res, UsersState>;
 }
 
 /// @nodoc
-class _$CreditsStateCopyWithImpl<$Res, $Val extends CreditsState>
-    implements $CreditsStateCopyWith<$Res> {
-  _$CreditsStateCopyWithImpl(this._value, this._then);
+class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
+    implements $UsersStateCopyWith<$Res> {
+  _$UsersStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -359,7 +359,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$CreditsStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$UsersStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -373,7 +373,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'CreditsState.initial()';
+    return 'UsersState.initial()';
   }
 
   @override
@@ -390,7 +390,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Credit> credits) loaded,
+    required TResult Function(UserResponseModel user) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -401,7 +401,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Credit> credits)? loaded,
+    TResult? Function(UserResponseModel user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -412,7 +412,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Credit> credits)? loaded,
+    TResult Function(UserResponseModel user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -460,7 +460,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements CreditsState {
+abstract class _Initial implements UsersState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -473,7 +473,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$CreditsStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$UsersStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -487,7 +487,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'CreditsState.loading()';
+    return 'UsersState.loading()';
   }
 
   @override
@@ -504,7 +504,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Credit> credits) loaded,
+    required TResult Function(UserResponseModel user) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -515,7 +515,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Credit> credits)? loaded,
+    TResult? Function(UserResponseModel user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -526,7 +526,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Credit> credits)? loaded,
+    TResult Function(UserResponseModel user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -574,7 +574,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements CreditsState {
+abstract class _Loading implements UsersState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -584,12 +584,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Credit> credits});
+  $Res call({UserResponseModel user});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$CreditsStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$UsersStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -598,13 +598,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? credits = null,
+    Object? user = null,
   }) {
     return _then(_$LoadedImpl(
-      null == credits
-          ? _value._credits
-          : credits // ignore: cast_nullable_to_non_nullable
-              as List<Credit>,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserResponseModel,
     ));
   }
 }
@@ -612,19 +612,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<Credit> credits) : _credits = credits;
+  const _$LoadedImpl(this.user);
 
-  final List<Credit> _credits;
   @override
-  List<Credit> get credits {
-    if (_credits is EqualUnmodifiableListView) return _credits;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_credits);
-  }
+  final UserResponseModel user;
 
   @override
   String toString() {
-    return 'CreditsState.loaded(credits: $credits)';
+    return 'UsersState.loaded(user: $user)';
   }
 
   @override
@@ -632,12 +627,11 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._credits, _credits));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_credits));
+  int get hashCode => Object.hash(runtimeType, user);
 
   @JsonKey(ignore: true)
   @override
@@ -650,10 +644,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Credit> credits) loaded,
+    required TResult Function(UserResponseModel user) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(credits);
+    return loaded(user);
   }
 
   @override
@@ -661,10 +655,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Credit> credits)? loaded,
+    TResult? Function(UserResponseModel user)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(credits);
+    return loaded?.call(user);
   }
 
   @override
@@ -672,12 +666,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Credit> credits)? loaded,
+    TResult Function(UserResponseModel user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(credits);
+      return loaded(user);
     }
     return orElse();
   }
@@ -720,10 +714,10 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements CreditsState {
-  const factory _Loaded(final List<Credit> credits) = _$LoadedImpl;
+abstract class _Loaded implements UsersState {
+  const factory _Loaded(final UserResponseModel user) = _$LoadedImpl;
 
-  List<Credit> get credits;
+  UserResponseModel get user;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -740,7 +734,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$CreditsStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$UsersStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -770,7 +764,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'CreditsState.error(message: $message)';
+    return 'UsersState.error(message: $message)';
   }
 
   @override
@@ -795,7 +789,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Credit> credits) loaded,
+    required TResult Function(UserResponseModel user) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -806,7 +800,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Credit> credits)? loaded,
+    TResult? Function(UserResponseModel user)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -817,7 +811,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Credit> credits)? loaded,
+    TResult Function(UserResponseModel user)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -865,7 +859,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements CreditsState {
+abstract class _Error implements UsersState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/credits/credits_bloc.dart';
+import '../../bloc/schedules/schedules_bloc.dart';
+import '../../bloc/users/users_bloc.dart';
 import '../../common/constants/colors.dart';
 import '../../common/widgets/custom_scaffold.dart';
 import '../../common/widgets/row_text.dart';
@@ -17,6 +19,7 @@ class _CreditHoursPageState extends State<CreditHoursPage> {
   void initState() {
     super.initState();
     context.read<CreditsBloc>().add(const CreditsEvent.getCredits());
+    context.read<UsersBloc>().add(const UsersEvent.getUser());
   }
 
   @override
@@ -54,30 +57,45 @@ class _CreditHoursPageState extends State<CreditHoursPage> {
                 ],
               ),
               const SizedBox(height: 16.0),
-              ListTile(
-                contentPadding: const EdgeInsets.all(0),
-                leading: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                  child: Image.network(
-                    'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                title: const Text(
-                  "Jesica Jane",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                subtitle: const Text(
-                  "Mahasiswa",
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
+              BlocBuilder<UsersBloc, UsersState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                    loaded: (user) {
+                      // Access user data here
+                      // Assuming 'name' is the property for the user's name
+                      // String userName = user.name; 
+                      return ListTile(
+                        contentPadding: const EdgeInsets.all(0),
+                        leading: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
+                          child: Image.network(
+                            'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
+                            width: 40,
+                            height: 40,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        title: Text(
+                          user.name,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        subtitle: Text(
+                          user.roles,
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               const SizedBox(height: 16.0),
               const Divider(),
