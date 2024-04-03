@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
+import '../course/course_page.dart';
 import '../profile/profile_page.dart';
 import 'course_schedule_page.dart';
 import 'dashboard_page.dart';
-import 'subject_page.dart';
+import 'subject_page_test.dart';
 
 class StudentPage extends StatefulWidget {
   const StudentPage({super.key});
@@ -24,7 +25,7 @@ class _MahasiswaPageState extends State<StudentPage> {
 
   final List<Widget> _pages = [
     const DashboardPage(),
-    const SubjectPage(),
+    const CoursePage(),
     const ProfilePage(role: 'Mahasiswa'),
   ];
 

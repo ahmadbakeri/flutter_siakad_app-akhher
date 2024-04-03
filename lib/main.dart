@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_siakad_app/data/datasources/auth_local_datasource.dart';
 import 'package:flutter_siakad_app/pages/student/student_page.dart';
 import 'dart:io';
+import 'bloc/courses/courses_bloc.dart';
 import 'bloc/credits/credits_bloc.dart';
 import 'bloc/schedules/schedules_bloc.dart';
 import 'bloc/subjects/subjects_bloc.dart';
@@ -36,8 +37,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SchedulesBloc(),
         ),
+        // BlocProvider(
+        //   create: (context) => SubjectsBloc(),
+        // ),
         BlocProvider(
-          create: (context) => SubjectsBloc(),
+          create: (context) => CoursesBloc(),
         ),
         BlocProvider(
           create: (context) => UsersBloc(),

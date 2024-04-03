@@ -8,4 +8,6 @@ class Images {
   static const String algoritma = 'assets/images/algoritma.png';
   static const String rpl = 'assets/images/rpl.png';
   static const String maps = 'assets/images/maps.png';
+
+  static const String galaxy = 'assets/images/galaxy.png';
 }
