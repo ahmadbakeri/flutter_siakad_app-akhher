@@ -8,11 +8,13 @@ class ItemPage extends StatefulWidget {
   final String title;
   final String description;
   final String videoId;
+  final String gdriveLink;
   const ItemPage({
     super.key,
     required this.title,
     required this.description,
     required this.videoId,
+    required this.gdriveLink,
   });
 
   @override
@@ -78,6 +80,7 @@ class _ItemPageState extends State<ItemPage> {
                       child: SmallText(
                         textAlign: TextAlign.justify,
                         text: widget.description,
+                        maxLines: 1000,
                       ),
                     ),
                   ),
@@ -85,7 +88,7 @@ class _ItemPageState extends State<ItemPage> {
                 Link(
                   target: LinkTarget.blank,
                   uri: Uri.parse(
-                      'https://drive.google.com/file/d/18z8NfS1ZSd6Oo7vF62vUxYH3JzAsusEt/view?usp=sharing'),
+                      widget.gdriveLink),
                   builder: (context, followLink) {
                     return InkWell(
                       onTap: followLink,

@@ -8,6 +8,7 @@ import '../../../common/widgets/search_input.dart';
 import '../../../common/widgets/small_text.dart';
 import '../../student/attendance_page.dart';
 import '../subject_page.dart';
+import 'course_data.dart';
 import 'subject_data.dart';
 
 class CoursePageBody extends StatefulWidget {
@@ -112,7 +113,7 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: 10,
+                      itemCount: data.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
@@ -139,11 +140,11 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                                   width: 120,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: Colors.white,
-                                      image: const DecorationImage(
+                                      color: Colors.grey[200],
+                                      image: DecorationImage(
                                           fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'assets/images/galaxy.png'))),
+                                          image:
+                                              NetworkImage(data[index].image))),
                                 ),
                                 Expanded(
                                   child: Container(
@@ -161,8 +162,8 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                                         ]),
                                     height: 100,
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(horizontal: 20),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -173,10 +174,11 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                                           const SizedBox(height: 5),
                                           SmallText(text: data[index].subtitle),
                                           const SizedBox(height: 5),
-                                          SubjectData(
-                                              author: 'Akhher',
-                                              time: '${data[index].time} h',
-                                              category: 'Dynamics'),
+                                          CourseData(
+                                            level:
+                                                'class ${data[index].CourseClass}',
+                                            time: '${data[index].time} h',
+                                          )
                                         ],
                                       ),
                                     ),
@@ -206,7 +208,9 @@ class _CoursePageBodyState extends State<CoursePageBody> {
           margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
+            color: index.isEven
+                ? const Color(0xFF69c5df)
+                : const Color(0xFF9294cc),
             image: const DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage('assets/images/galaxy.png')),
@@ -253,7 +257,6 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                   const SubjectData(
                     author: 'Akhher',
                     time: '10 m',
-                    category: 'Dynamics',
                   ),
                 ],
               ),

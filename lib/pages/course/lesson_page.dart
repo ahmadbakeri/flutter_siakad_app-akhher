@@ -3,7 +3,7 @@ import '../../common/widgets/big_text.dart';
 import '../../common/widgets/small_text.dart';
 import '../../data/models/response/course_response_model.dart';
 import 'item_page.dart';
-import 'widgets/subject_data.dart';
+import 'widgets/lesson_data.dart';
 
 class LessonPage extends StatelessWidget {
   final Subject subject; // Assuming Subject is your data model
@@ -26,8 +26,8 @@ class LessonPage extends StatelessWidget {
             backgroundColor: Colors.blue,
             expandedHeight: 250,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/images/galaxy.png',
+              background: Image.network(
+                subject.image,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -53,15 +53,18 @@ class LessonPage extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 10),
-                  SubjectData(
-                    author: subject.lecturer.name,
-                    time: subject.code,
-                    category: 'Dynamics',
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: LessonData(
+                        author: subject.lecturer.name,
+                        time: '${subject.time} min',
+                        field: ' ${subject.field}'),
                   ),
                   const SizedBox(height: 10),
                   SmallText(
-                      text:
-                          'Hukum Newton dalam fisika merangkum tiga hukum gerak penting. Hukum pertama menyatakan benda akan tetap diam atau bergerak lurus kecuali ada gaya. Hukum Newton dalam fisika merangkum tiga hukum gerak penting. Hukum pertama menyatakan benda akan tetap diam atau bergerak lurus kecuali ada gaya. Hukum Newton dalam fisika merangkum tiga hukum gerak penting. Hukum pertama menyatakan benda akan tetap diam atau bergerak lurus kecuali ada gaya. Hukum Newton dalam fisika merangkum tiga hukum gerak penting. Hukum pertama menyatakan benda akan tetap diam atau bergerak lurus kecuali ada gaya.Hukum Newton dalam fisika merangkum tiga hukum gerak penting. Hukum pertama menyatakan benda akan tetap diam atau bergerak lurus kecuali ada gaya.Hukum Newton dalam fisika merangkum tiga hukum gerak penting. Hukum pertama menyatakan benda akan tetap diam atau bergerak lurus kecuali ada gaya'),
+                    text: subject.description,
+                    maxLines: 1000,
+                  ),
                   const SizedBox(height: 20),
                   Container(
                     width: double.maxFinite,
@@ -73,7 +76,7 @@ class LessonPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BigText(text: 'Lessons'),
-                      BigText(text: '4 items'),
+                      BigText(text: lessons.length.toString()),
                     ],
                   ),
                   ListView.builder(
@@ -89,7 +92,15 @@ class LessonPage extends StatelessWidget {
                           width: double.maxFinite,
                           // height: 50,
                           decoration: BoxDecoration(
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color(0xFFe8e8e8),
+                                offset: Offset(0, 5),
+                                blurRadius: 5.0,
+                              )
+                            ],
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,8 +110,7 @@ class LessonPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SmallText(text: lessons[index].title),
-                                  SmallText(
-                                      text: '${lessons[index].minutes} min'),
+                                  SmallText(text: '${lessons[index].time} min'),
                                 ],
                               ),
                               TextButton(
@@ -115,6 +125,7 @@ class LessonPage extends StatelessWidget {
                                           description:
                                               lessons[index].description,
                                           videoId: lessons[index].youtubeLink,
+                                          gdriveLink: lessons[index].gdriveLink,
                                         );
                                       },
                                     ),

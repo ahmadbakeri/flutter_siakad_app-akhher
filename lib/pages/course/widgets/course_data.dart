@@ -1,13 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../common/widgets/small_text.dart';
 
-class SubjectData extends StatelessWidget {
-  final String author;
+class CourseData extends StatelessWidget {
+  final String level;
   final String time;
-  const SubjectData({
+  const CourseData({
     super.key,
-    required this.author,
+    required this.level,
     required this.time,
   });
 
@@ -18,8 +19,8 @@ class SubjectData extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(Icons.person, size: 11),
-            SmallText(text: ' $author'),
+            const Icon(Icons.class_, size: 11),
+            SmallText(text: ' $level'),
           ],
         ),
         Row(

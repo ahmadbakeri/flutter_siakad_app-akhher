@@ -49,7 +49,8 @@ class SubjectPage extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                  margin:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                   child: Row(
                     children: [
                       Container(
@@ -58,9 +59,9 @@ class SubjectPage extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.white,
-                            image: const DecorationImage(
+                            image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage('assets/images/galaxy.png'))),
+                                image: NetworkImage(subjects[index].image))),
                       ),
                       Expanded(
                         child: Container(
@@ -78,14 +79,12 @@ class SubjectPage extends StatelessWidget {
                               children: [
                                 BigText(text: subjects[index].title),
                                 const SizedBox(height: 5),
-                                SmallText(
-                                    text:
-                                        'Hukum Newton dalam fisika merangkum'),
+                                SmallText(text: subjects[index].subtitle),
                                 const SizedBox(height: 5),
                                 SubjectData(
-                                    author: subjects[index].lecturer.name,
-                                    time: '10 m',
-                                    category: ''),
+                                  author: subjects[index].lecturer.name,
+                                  time: '10 m',
+                                ),
                               ],
                             ),
                           ),
