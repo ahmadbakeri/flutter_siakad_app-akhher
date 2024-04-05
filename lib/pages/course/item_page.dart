@@ -1,41 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
 import '../../common/widgets/big_text.dart';
 import '../../common/widgets/small_text.dart';
-
-// class ItemPage extends StatelessWidget {
-//   final String lessonTitle;
-//   final int length;
-//   final String title;
-//   final String subtitle;
-
-//   const ItemPage({
-//     Key? key,
-//     required this.lessonTitle,
-//     required this.length,
-//     required this.title,
-//     required this.subtitle,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//   }
-// }
 
 class ItemPage extends StatefulWidget {
   final String title;
   final String description;
   final String videoId;
   const ItemPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.videoId,
-  }) : super(key: key);
+  });
 
   @override
   State<ItemPage> createState() => _ItemPageState();

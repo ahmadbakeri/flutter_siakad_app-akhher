@@ -9,9 +9,9 @@ import 'widgets/subject_data.dart';
 class SubjectPage extends StatelessWidget {
   final Course course;
   const SubjectPage({
-    Key? key,
+    super.key,
     required this.course,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

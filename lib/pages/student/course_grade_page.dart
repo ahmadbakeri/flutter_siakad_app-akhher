@@ -10,10 +10,10 @@ class CourseGradePage extends StatefulWidget {
   final String name;
   final String role;
   const CourseGradePage({
-    Key? key,
+    super.key,
     required this.name,
     required this.role,
-  }) : super(key: key);
+  });
 
   @override
   State<CourseGradePage> createState() => _CourseGradeState();

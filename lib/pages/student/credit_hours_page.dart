@@ -10,10 +10,10 @@ class CreditHoursPage extends StatefulWidget {
   final String name;
   final String role;
   const CreditHoursPage({
-    Key? key,
+    super.key,
     required this.name,
     required this.role,
-  }) : super(key: key);
+  });
 
   @override
   State<CreditHoursPage> createState() => _CreditHoursPageState();

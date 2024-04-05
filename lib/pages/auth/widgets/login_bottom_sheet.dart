@@ -100,10 +100,14 @@ class _LoginBottomSheetState extends State<LoginBottomSheet> {
                       orElse: () {},
                       loaded: (data) {
                         AuthLocalDatasource().saveAuthData(data);
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const StudentPage();
-                        }));
+                        // Navigate to Student Page and remove previous pages
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          StudentPage.generateRoute(
+                            const RouteSettings(name: '/student'),
+                          ),
+                          (route) => false, // Remove all previous routes
+                        );
                       },
                       error: (message) {
                         showDialog(

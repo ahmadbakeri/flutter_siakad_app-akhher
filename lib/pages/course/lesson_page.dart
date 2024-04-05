@@ -9,7 +9,7 @@ class LessonPage extends StatelessWidget {
   final Subject subject; // Assuming Subject is your data model
   // Add other necessary fields here
 
-  const LessonPage({Key? key, required this.subject}) : super(key: key);
+  const LessonPage({super.key, required this.subject});
 
   @override
   Widget build(BuildContext context) {

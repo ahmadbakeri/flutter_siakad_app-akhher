@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class AppIcon extends StatelessWidget {
   final IconData icon;
   const AppIcon({
-    Key? key,
+    super.key,
     required this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

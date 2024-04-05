@@ -16,15 +16,18 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const AuthPage(),
-          ),
-        ),
+      () {
+        if (mounted) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => const AuthPage(),
+            ),
+          );
+        }
+      },
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

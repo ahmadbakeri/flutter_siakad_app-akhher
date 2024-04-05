@@ -10,11 +10,11 @@ class CourseGradeTile extends StatelessWidget {
   final String role;
   final CourseGradeModel data;
   const CourseGradeTile({
-    Key? key,
+    super.key,
     required this.name,
     required this.role,
     required this.data,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
