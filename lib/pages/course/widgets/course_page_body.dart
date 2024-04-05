@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/courses/courses_bloc.dart';
+import '../../../bloc/toplists/toplists_bloc.dart';
 import '../../../common/constants/colors.dart';
 import '../../../common/widgets/big_text.dart';
 import '../../../common/widgets/search_input.dart';
 import '../../../common/widgets/small_text.dart';
 import '../../student/attendance_page.dart';
+import '../lesson_page.dart';
 import '../subject_page.dart';
+import '../top_lesson_page copy.dart';
 import 'course_data.dart';
 import 'subject_data.dart';
 
@@ -24,6 +27,7 @@ class _CoursePageBodyState extends State<CoursePageBody> {
   void initState() {
     super.initState();
     context.read<CoursesBloc>().add(const CoursesEvent.getCourses());
+    context.read<ToplistsBloc>().add(const ToplistsEvent.getToplists());
   }
 
   @override
@@ -80,26 +84,81 @@ class _CoursePageBodyState extends State<CoursePageBody> {
             ],
           ),
         ),
+        Container(
+          // color: Colors.redAccent,
+          height: 280,
+          child: PageView.builder(
+            controller: pageController,
+            itemCount: 5,
+            itemBuilder: (context, position) {
+              return _buildPageItem(position);
+            },
+          ),
+        ),
         BlocBuilder<CoursesBloc, CoursesState>(
           builder: (context, state) {
             return state.maybeWhen(
-              orElse: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              loaded: (data) {
+              orElse: () {
                 return Column(
                   children: [
                     Container(
-                      // color: Colors.redAccent,
-                      height: 280,
-                      child: PageView.builder(
-                        controller: pageController,
-                        itemCount: 5,
-                        itemBuilder: (context, position) {
-                          return _buildPageItem(position);
-                        },
+                      height: 40,
+                      margin: const EdgeInsets.only(left: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          BigText(text: 'Course List'),
+                        ],
                       ),
                     ),
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: const EdgeInsets.only(
+                              left: 20, right: 20, bottom: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 120,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: index.isEven
+                                      ? const Color(0xFF69c5df)
+                                      : const Color(0xFF9294cc),
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(20),
+                                          topRight: Radius.circular(20)),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0xFFe8e8e8),
+                                          offset: Offset(0, 2),
+                                          blurRadius: 5.0,
+                                        ),
+                                      ]),
+                                  height: 100,
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    )
+                  ],
+                );
+              },
+              loaded: (data) {
+                return Column(
+                  children: [
                     Container(
                       height: 40,
                       margin: const EdgeInsets.only(left: 30),
@@ -140,7 +199,9 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                                   width: 120,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: Colors.grey[200],
+                                      color: index.isEven
+                                          ? const Color(0xFF69c5df)
+                                          : const Color(0xFF9294cc),
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
                                           image:
@@ -201,69 +262,123 @@ class _CoursePageBodyState extends State<CoursePageBody> {
   }
 
   Widget _buildPageItem(int index) {
-    return Stack(
-      children: [
-        Container(
-          height: 220,
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: index.isEven
-                ? const Color(0xFF69c5df)
-                : const Color(0xFF9294cc),
-            image: const DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/galaxy.png')),
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: 110,
-            margin: const EdgeInsets.only(bottom: 10, left: 30, right: 30),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                  color: Color(0xFFe8e8e8),
-                  offset: Offset(0, 5),
-                  blurRadius: 5.0,
+    return BlocBuilder<ToplistsBloc, ToplistsState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          orElse: () {
+            return Stack(
+              children: [
+                Container(
+                  height: 220,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
+                  ),
                 ),
-                BoxShadow(
-                  color: Colors.white,
-                  offset: Offset(-5, 0),
-                ),
-                BoxShadow(
-                  color: Colors.white,
-                  offset: Offset(5, 0),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: 110,
+                    margin: EdgeInsets.only(bottom: 10, left: 30, right: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0xFFe8e8e8),
+                          offset: Offset(0, 5),
+                          blurRadius: 5.0,
+                        ),
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-5, 0),
+                        ),
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(5, 0),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
-            ),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+            );
+          },
+          loaded: (data) {
+            return GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return TopLessonPage(subject: data[index].subject);
+                },),);
+              },
+              child: Stack(
                 children: [
-                  BigText(
-                    text: 'Hukum Newton',
+                  Container(
+                    height: 220,
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: index.isEven
+                          ? const Color(0xFF69c5df)
+                          : const Color(0xFF9294cc),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(data[index].subject.image)),
+                    ),
                   ),
-                  const SizedBox(height: 5),
-                  SmallText(
-                      text:
-                          'Hukum Newton dalam fisika merangkum. Hukum Newton dalam fisika merangkum.'),
-                  const SizedBox(height: 5),
-                  const SubjectData(
-                    author: 'Akhher',
-                    time: '10 m',
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      height: 110,
+                      margin:
+                          const EdgeInsets.only(bottom: 10, left: 30, right: 30),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0xFFe8e8e8),
+                            offset: Offset(0, 5),
+                            blurRadius: 5.0,
+                          ),
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(-5, 0),
+                          ),
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(5, 0),
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BigText(
+                              text: data[index].subject.title,
+                            ),
+                            const SizedBox(height: 5),
+                            SmallText(text: data[index].subject.subtitle),
+                            const SizedBox(height: 5),
+                            SubjectData(
+                              author: data[index].subject.lecturer.name,
+                              time: data[index].subject.time,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
-      ],
+            );
+          },
+        );
+      },
     );
   }
 }

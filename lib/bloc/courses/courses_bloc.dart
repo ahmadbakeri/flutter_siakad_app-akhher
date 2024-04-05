@@ -8,7 +8,7 @@ part 'courses_bloc.freezed.dart';
 
 class CoursesBloc extends Bloc<CoursesEvent, CoursesState> {
   CoursesBloc() : super(const _Initial()) {
-    on<CoursesEvent>((event, emit) async {
+    on<_GetCourses>((event, emit) async {
       emit(const _Loading());
       final response = await CourseRemoteDatasource().getCourses();
       response.fold(

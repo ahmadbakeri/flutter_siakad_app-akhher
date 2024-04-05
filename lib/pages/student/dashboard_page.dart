@@ -25,18 +25,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 20,
-        title: const Text(
-          "Perkuliahan",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: ColorName.primary,
-          ),
-        ),
-        backgroundColor: Colors.white,
-      ),
       body: BlocBuilder<UsersBloc, UsersState>(
         builder: (context, state) {
           return state.maybeWhen(
@@ -48,8 +36,18 @@ class _DashboardPageState extends State<DashboardPage> {
               // Assuming 'name' is the property for the user's name
               // String userName = user.name;
               return ListView(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(
+                    bottom: 20, left: 20, right: 20, top: 26),
                 children: [
+                  const Text(
+                    "Perkuliahan",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      color: ColorName.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   MenuCard(
                     label: 'Kartu Hasil\nStudi',
                     backgroundColor: const Color(0xff686BFF),

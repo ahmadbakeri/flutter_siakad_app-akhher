@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_siakad_app/data/datasources/auth_local_datasource.dart';
-import 'package:flutter_siakad_app/pages/student/student_page.dart';
 import 'dart:io';
+import 'bloc/toplists/toplists_bloc.dart';
 import 'bloc/courses/courses_bloc.dart';
 import 'bloc/credits/credits_bloc.dart';
 import 'bloc/schedules/schedules_bloc.dart';
 import 'bloc/users/users_bloc.dart';
+import 'data/datasources/auth_local_datasource.dart';
 import 'pages/auth/splash_page.dart';
+import 'pages/student/student_page.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -36,9 +37,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => SchedulesBloc(),
         ),
-        // BlocProvider(
-        //   create: (context) => SubjectsBloc(),
-        // ),
+        BlocProvider(
+          create: (context) => ToplistsBloc(),
+        ),
         BlocProvider(
           create: (context) => CoursesBloc(),
         ),
