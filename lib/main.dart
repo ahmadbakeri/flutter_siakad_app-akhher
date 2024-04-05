@@ -6,7 +6,6 @@ import 'dart:io';
 import 'bloc/courses/courses_bloc.dart';
 import 'bloc/credits/credits_bloc.dart';
 import 'bloc/schedules/schedules_bloc.dart';
-import 'bloc/subjects/subjects_bloc.dart';
 import 'bloc/users/users_bloc.dart';
 import 'pages/auth/splash_page.dart';
 

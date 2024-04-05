@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class BigText extends StatelessWidget {
   final String text;
   double size;
@@ -7,7 +8,7 @@ class BigText extends StatelessWidget {
   BigText({
     super.key,
     required this.text,
-    this.size = 23,
+    this.size = 16,
     this.color = Colors.black,
   });
 
@@ -18,6 +19,7 @@ class BigText extends StatelessWidget {
       style: TextStyle(
         fontSize: size,
         color: color,
+        fontWeight: FontWeight.w500,
       ),
     );
   }

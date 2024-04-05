@@ -18,7 +18,7 @@ class UserRemoteDatasource {
     if (response.statusCode == 200) {
       return Right(UserResponseModel.fromJson(response.body));
     } else {
-      return Left('Server error');
+      return const Left('Server error');
     }
   }
 }

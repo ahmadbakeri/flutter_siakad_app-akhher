@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../common/constants/colors.dart';
@@ -6,7 +7,13 @@ import 'models/course_grade_model.dart';
 import 'widgets/couse_grade_tile.dart';
 
 class CourseGradePage extends StatefulWidget {
-  const CourseGradePage({super.key});
+  final String name;
+  final String role;
+  const CourseGradePage({
+    Key? key,
+    required this.name,
+    required this.role,
+  }) : super(key: key);
 
   @override
   State<CourseGradePage> createState() => _CourseGradeState();
@@ -46,6 +53,8 @@ class _CourseGradeState extends State<CourseGradePage> {
           ),
           const SizedBox(height: 15.0),
           CourseGradeTile(
+            name: widget.name,
+            role: widget.role,
             data: CourseGradeModel(
               information: '',
               attendance: 'Hadir',
@@ -56,6 +65,8 @@ class _CourseGradeState extends State<CourseGradePage> {
           ),
           const SizedBox(height: 50.0),
           CourseGradeTile(
+            name: widget.name,
+            role: widget.role,
             data: CourseGradeModel(
               information: '',
               attendance: 'Hadir',
@@ -66,6 +77,8 @@ class _CourseGradeState extends State<CourseGradePage> {
           ),
           const SizedBox(height: 50.0),
           CourseGradeTile(
+            name: widget.name,
+            role: widget.role,
             data: CourseGradeModel(
               information: '',
               attendance: 'Hadir',

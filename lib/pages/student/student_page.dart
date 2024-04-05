@@ -3,18 +3,23 @@ import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
 import '../course/course_page.dart';
 import '../profile/profile_page.dart';
-import 'course_schedule_page.dart';
 import 'dashboard_page.dart';
-import 'subject_page_test.dart';
 
 class StudentPage extends StatefulWidget {
   const StudentPage({super.key});
 
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    return MaterialPageRoute(
+      builder: (BuildContext context) => const StudentPage(),
+      settings: settings,
+    );
+  }
+
   @override
-  State<StudentPage> createState() => _MahasiswaPageState();
+  State<StudentPage> createState() => _StudentPageState();
 }
 
-class _MahasiswaPageState extends State<StudentPage> {
+class _StudentPageState extends State<StudentPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -24,8 +29,8 @@ class _MahasiswaPageState extends State<StudentPage> {
   }
 
   final List<Widget> _pages = [
-    const DashboardPage(),
     const CoursePage(),
+    const DashboardPage(),
     const ProfilePage(role: 'Mahasiswa'),
   ];
 

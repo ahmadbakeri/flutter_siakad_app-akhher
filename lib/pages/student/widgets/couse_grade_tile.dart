@@ -1,14 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import '../../../common/constants/colors.dart';
 import '../../../common/widgets/row_text.dart';
 import '../models/course_grade_model.dart';
 
-
-
-
 class CourseGradeTile extends StatelessWidget {
+  final String name;
+  final String role;
   final CourseGradeModel data;
-  const CourseGradeTile({super.key, required this.data});
+  const CourseGradeTile({
+    Key? key,
+    required this.name,
+    required this.role,
+    required this.data,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +33,16 @@ class CourseGradeTile extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          title: const Text(
-            "Jesica Jane",
-            style: TextStyle(
+          title:  Text(
+            name,
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
           ),
-          subtitle: const Text(
-            "Mahasiswa",
-            style: TextStyle(
+          subtitle:  Text(
+            role,
+            style: const TextStyle(
               fontSize: 12,
             ),
           ),
