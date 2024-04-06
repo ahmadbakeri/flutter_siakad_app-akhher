@@ -1,29 +1,29 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/credits/credits_bloc.dart';
+import '../../bloc/grades/grades_bloc.dart';
 import '../../common/constants/colors.dart';
 import '../../common/widgets/custom_scaffold.dart';
 import '../../common/widgets/row_text.dart';
 
-class CreditHoursPage extends StatefulWidget {
+class GradePage extends StatefulWidget {
   final String name;
   final String role;
-  const CreditHoursPage({
+  const GradePage({
     super.key,
     required this.name,
     required this.role,
   });
 
   @override
-  State<CreditHoursPage> createState() => _CreditHoursPageState();
+  State<GradePage> createState() => _GradePageState();
 }
 
-class _CreditHoursPageState extends State<CreditHoursPage> {
+class _GradePageState extends State<GradePage> {
   @override
   void initState() {
     super.initState();
-    context.read<CreditsBloc>().add(const CreditsEvent.getCredits());
+    context.read<GradesBloc>().add(const GradesEvent.getGrades());
   }
 
   @override
@@ -95,7 +95,7 @@ class _CreditHoursPageState extends State<CreditHoursPage> {
                   labelColor: ColorName.primary,
                   valueColor: ColorName.primary,
                 ),
-                BlocBuilder<CreditsBloc, CreditsState>(
+                BlocBuilder<GradesBloc, GradesState>(
                   builder: (context, state) {
                     return state.maybeWhen(
                       orElse: () {
@@ -121,7 +121,7 @@ class _CreditHoursPageState extends State<CreditHoursPage> {
                               itemCount: data.length,
                               itemBuilder: (context, index) {
                                 return RowText(
-                                  label: data[index].subject.title,
+                                  label: data[index].course.title,
                                   value: data[index].grade,
                                 );
                               },

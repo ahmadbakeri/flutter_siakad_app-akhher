@@ -57,4 +57,9 @@ extension DateTimeExt on DateTime {
     final int tahun = year;
     return '$hari, $day $bulan $tahun';
   }
+
+  String toFormattedDay() {
+    final String hari = _getNamaHari(weekday);
+    return hari;
+  }
 }

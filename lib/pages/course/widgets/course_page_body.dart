@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../bloc/courses/courses_bloc.dart';
 import '../../../bloc/toplists/toplists_bloc.dart';
 import '../../../common/constants/colors.dart';
@@ -8,9 +7,8 @@ import '../../../common/widgets/big_text.dart';
 import '../../../common/widgets/search_input.dart';
 import '../../../common/widgets/small_text.dart';
 import '../../student/attendance_page.dart';
-import '../lesson_page.dart';
 import '../subject_page.dart';
-import '../top_lesson_page copy.dart';
+import '../top_lesson_page.dart';
 import 'course_data.dart';
 import 'subject_data.dart';
 
@@ -273,14 +271,14 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
+                    color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
                   ),
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     height: 110,
-                    margin: EdgeInsets.only(bottom: 10, left: 30, right: 30),
+                    margin: const EdgeInsets.only(bottom: 10, left: 30, right: 30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white,

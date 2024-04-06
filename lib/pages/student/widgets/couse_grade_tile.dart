@@ -22,6 +22,7 @@ class CourseGradeTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
+        const Divider(),
         ListTile(
           contentPadding: const EdgeInsets.all(0),
           leading: ClipRRect(
@@ -33,23 +34,20 @@ class CourseGradeTile extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          title:  Text(
+          title: Text(
             name,
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
           ),
-          subtitle:  Text(
+          subtitle: Text(
             role,
             style: const TextStyle(
               fontSize: 12,
             ),
           ),
         ),
-        const SizedBox(height: 16.0),
-        const Divider(),
-        const SizedBox(height: 16.0),
         RowText(
           label: 'Absensi',
           value: '',

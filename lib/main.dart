@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
+import 'bloc/bloc/attendances_bloc.dart';
+import 'bloc/grades/grades_bloc.dart';
 import 'bloc/toplists/toplists_bloc.dart';
 import 'bloc/courses/courses_bloc.dart';
-import 'bloc/credits/credits_bloc.dart';
 import 'bloc/schedules/schedules_bloc.dart';
 import 'bloc/users/users_bloc.dart';
 import 'data/datasources/auth_local_datasource.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => CreditsBloc(),
+          create: (context) => GradesBloc(),
         ),
         BlocProvider(
           create: (context) => SchedulesBloc(),
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UsersBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AttendancesBloc(),
         ),
       ],
       child: MaterialApp(

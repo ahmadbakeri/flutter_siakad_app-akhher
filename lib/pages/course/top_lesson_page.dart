@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common/widgets/big_text.dart';
 import '../../common/widgets/small_text.dart';
-import '../../data/models/response/course_response_model.dart';
 import '../../data/models/response/toplist_response_model.dart';
 import 'item_page.dart';
 import 'widgets/lesson_data.dart';

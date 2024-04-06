@@ -31,7 +31,7 @@ class _StudentPageState extends State<StudentPage> {
   final List<Widget> _pages = [
     const CoursePage(),
     const DashboardPage(),
-    const ProfilePage(role: 'Mahasiswa'),
+    const ProfilePage(),
   ];
 
   @override

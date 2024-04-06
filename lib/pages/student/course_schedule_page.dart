@@ -75,20 +75,28 @@ class _CourseSchedulePageState extends State<CourseSchedulePage> {
                       child: CircularProgressIndicator(),
                     ),
                     loaded: (data) {
+                      var filterredSchedules = data
+                          .where((schedule) =>
+                              schedule.day.toLowerCase() ==
+                              DateTime.now().toFormattedDay().toLowerCase())
+                          .toList();
                       return ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: data.length,
+                        itemCount: filterredSchedules.length,
                         itemBuilder: (context, index) {
                           return CourseScheduleTile(
                             data: CourseScheduleModel(
                               dateStart: DateTime.now(),
                               longTimeTeaching: 90,
-                              course: data[index].subject.title,
-                              lecturer: data[index].subject.lecturer.name,
-                              description: data[index].room,
-                              startTime: data[index].startTime,
-                              endTime: data[index].endTime,
+                              course: filterredSchedules[index].subject.title,
+                              lecturer: filterredSchedules[index]
+                                  .subject
+                                  .lecturer
+                                  .name,
+                              description: filterredSchedules[index].room,
+                              startTime: filterredSchedules[index].startTime,
+                              endTime: filterredSchedules[index].endTime,
                             ),
                           );
                         },

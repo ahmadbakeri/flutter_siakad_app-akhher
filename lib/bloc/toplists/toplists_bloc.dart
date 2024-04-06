@@ -1,9 +1,7 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../data/datasources/toplist_remote_datasource.dart';
 import '../../data/models/response/toplist_response_model.dart';
-
 part 'toplists_event.dart';
 part 'toplists_state.dart';
 part 'toplists_bloc.freezed.dart';

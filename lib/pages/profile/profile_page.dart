@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 
+import 'package:flutter_siakad_app/common/extensions/date_time_ext.dart';
+
 import '../../bloc/logout/logout_bloc.dart';
 import '../../bloc/users/users_bloc.dart';
 import '../../common/constants/colors.dart';
@@ -13,10 +15,10 @@ import '../../data/datasources/auth_local_datasource.dart';
 import '../auth/auth_page.dart';
 
 class ProfilePage extends StatefulWidget {
-  final String role;
+
   const ProfilePage({
     super.key,
-    required this.role,
+  
   });
 
   @override
@@ -90,7 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         Border.all(color: ColorName.primary),
                                   ),
                                   child: Text(
-                                    widget.role,
+                                    user.roles,
                                     style: const TextStyle(
                                       color: ColorName.primary,
                                       fontSize: 8,
@@ -98,19 +100,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                   ),
                                 ),
-                                const Text(
-                                  "Hery Hermawan",
-                                  style: TextStyle(
+                                Text(
+                                  user.name,
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w700,
                                     color: ColorName.primary,
                                   ),
                                 ),
-                                const Text(
-                                  "Minggu, 17 Maret 2024",
-                                  style: TextStyle(
-                                    fontSize: 8,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                StreamBuilder(
+                                  stream: Stream.periodic(
+                                      const Duration(seconds: 1), (i) => i),
+                                  builder: (context, snapshot) {
+                                    final formattedTime =
+                                        //this code only fetch the number, how can I fetch the day name and month name?
+                                        DateTime.now().toFormattedDateWithDay();
+                                    return Text(
+                                      formattedTime,
+                                      style: const TextStyle(
+                                        fontSize: 8,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ],
                             ),

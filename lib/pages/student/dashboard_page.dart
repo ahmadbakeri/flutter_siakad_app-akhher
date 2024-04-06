@@ -6,7 +6,7 @@ import '../../common/constants/images.dart';
 import '../../common/widgets/menu_card.dart';
 import 'course_grade_page.dart';
 import 'course_schedule_page.dart';
-import 'credit_hours_page.dart';
+import 'grade_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -55,7 +55,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreditHoursPage(
+                            builder: (context) => GradePage(
                               name: user.name,
                               role: user.roles,
                             ),

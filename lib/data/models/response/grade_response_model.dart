@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-class CreditResponseModel {
-    final List<Credit> data;
+class GradeResponseModel {
+    final List<Grade> data;
 
-    CreditResponseModel({
+    GradeResponseModel({
         required this.data,
     });
 
-    factory CreditResponseModel.fromJson(String str) => CreditResponseModel.fromMap(json.decode(str));
+    factory GradeResponseModel.fromJson(String str) => GradeResponseModel.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
-    factory CreditResponseModel.fromMap(Map<String, dynamic> json) => CreditResponseModel(
-        data: List<Credit>.from(json["data"].map((x) => Credit.fromMap(x))),
+    factory GradeResponseModel.fromMap(Map<String, dynamic> json) => GradeResponseModel(
+        data: List<Grade>.from(json["data"].map((x) => Grade.fromMap(x))),
     );
 
     Map<String, dynamic> toMap() => {
@@ -20,9 +20,9 @@ class CreditResponseModel {
     };
 }
 
-class Credit {
+class Grade {
     final int id;
-    final int subjectId;
+    final int courseId;
     final int studentId;
     final String score;
     final String grade;
@@ -34,11 +34,11 @@ class Credit {
     final dynamic deletedBy;
     final DateTime createdAt;
     final DateTime updatedAt;
-    final Subject subject;
+    final Course course;
 
-    Credit({
+    Grade({
         required this.id,
-        required this.subjectId,
+        required this.courseId,
         required this.studentId,
         required this.score,
         required this.grade,
@@ -50,16 +50,16 @@ class Credit {
         required this.deletedBy,
         required this.createdAt,
         required this.updatedAt,
-        required this.subject,
+        required this.course,
     });
 
-    factory Credit.fromJson(String str) => Credit.fromMap(json.decode(str));
+    factory Grade.fromJson(String str) => Grade.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
-    factory Credit.fromMap(Map<String, dynamic> json) => Credit(
+    factory Grade.fromMap(Map<String, dynamic> json) => Grade(
         id: json["id"],
-        subjectId: json["subject_id"],
+        courseId: json["course_id"],
         studentId: json["student_id"],
         score: json["score"],
         grade: json["grade"],
@@ -71,12 +71,12 @@ class Credit {
         deletedBy: json["deleted_by"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        subject: Subject.fromMap(json["subject"]),
+        course: Course.fromMap(json["course"]),
     );
 
     Map<String, dynamic> toMap() => {
         "id": id,
-        "subject_id": subjectId,
+        "course_id": courseId,
         "student_id": studentId,
         "score": score,
         "grade": grade,
@@ -88,48 +88,42 @@ class Credit {
         "deleted_by": deletedBy,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "subject": subject.toMap(),
+        "course": course.toMap(),
     };
 }
 
-class Subject {
+class Course {
     final int id;
     final String title;
-    final int lecturerId;
-    final String semester;
-    final String academicYear;
-    final int credit;
-    final String code;
-    final String description;
+    final String subtitle;
+    final String courseClass;
+    final String time;
+    final String image;
     final DateTime createdAt;
     final DateTime updatedAt;
 
-    Subject({
+    Course({
         required this.id,
         required this.title,
-        required this.lecturerId,
-        required this.semester,
-        required this.academicYear,
-        required this.credit,
-        required this.code,
-        required this.description,
+        required this.subtitle,
+        required this.courseClass,
+        required this.time,
+        required this.image,
         required this.createdAt,
         required this.updatedAt,
     });
 
-    factory Subject.fromJson(String str) => Subject.fromMap(json.decode(str));
+    factory Course.fromJson(String str) => Course.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
-    factory Subject.fromMap(Map<String, dynamic> json) => Subject(
+    factory Course.fromMap(Map<String, dynamic> json) => Course(
         id: json["id"],
         title: json["title"],
-        lecturerId: json["lecturer_id"],
-        semester: json["semester"],
-        academicYear: json["academic_year"],
-        credit: json["credit"],
-        code: json["code"],
-        description: json["description"],
+        subtitle: json["subtitle"],
+        courseClass: json["class"],
+        time: json["time"],
+        image: json["image"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
     );
@@ -137,12 +131,10 @@ class Subject {
     Map<String, dynamic> toMap() => {
         "id": id,
         "title": title,
-        "lecturer_id": lecturerId,
-        "semester": semester,
-        "academic_year": academicYear,
-        "credit": credit,
-        "code": code,
-        "description": description,
+        "subtitle": subtitle,
+        "class": courseClass,
+        "time": time,
+        "image": image,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };

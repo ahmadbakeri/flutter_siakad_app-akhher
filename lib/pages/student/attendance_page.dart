@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dash/flutter_dash.dart';
+import '../../bloc/users/users_bloc.dart';
 import '../../common/constants/colors.dart';
 import '../../common/constants/icons.dart';
 import '../../common/constants/images.dart';
+import '../../common/extensions/date_time_ext.dart';
 import '../../common/widgets/buttons.dart';
 import '../../common/widgets/custom_scaffold.dart';
 
@@ -67,41 +70,64 @@ class _AttendancePageState extends State<AttendancePage> {
                         ),
                       ),
                       const SizedBox(width: 10.0),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 11.0, vertical: 2.0),
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(16.0)),
-                              border: Border.all(color: ColorName.primary),
-                            ),
-                            child: const Text(
-                              'Mahasiswa',
-                              style: TextStyle(
-                                color: ColorName.primary,
-                                fontSize: 8,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const Text(
-                            "Hery Hermawan",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: ColorName.primary,
-                            ),
-                          ),
-                          const Text(
-                            "Minggu, 17 Maret 2024",
-                            style: TextStyle(
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
+                      BlocBuilder<UsersBloc, UsersState>(
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            orElse: () {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            },
+                            loaded: (user) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 11.0, vertical: 2.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(16.0)),
+                                      border:
+                                          Border.all(color: ColorName.primary),
+                                    ),
+                                    child: Text(
+                                      user.roles,
+                                      style: const TextStyle(
+                                        color: ColorName.primary,
+                                        fontSize: 8,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    user.name,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: ColorName.primary,
+                                    ),
+                                  ),
+                                  StreamBuilder(
+                                    stream: Stream.periodic(
+                                        const Duration(seconds: 1), (i) => i),
+                                    builder: (context, snapshot) {
+                                      final formattedTime =
+                                          //this code only fetch the number, how can I fetch the day name and month name?
+                                          DateTime.now()
+                                              .toFormattedDateWithDay();
+                                      return Text(
+                                        formattedTime,
+                                        style: const TextStyle(
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -164,7 +190,7 @@ class _AttendancePageState extends State<AttendancePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "Riwayat Absensi",
+                  "Jadwal Jam Pelajaran",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,

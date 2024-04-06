@@ -1,22 +1,110 @@
 import 'dart:convert';
 
-class ScheduleResponseModel {
-    final List<Schedule> data;
+class AttendanceResponseModel {
+    final List<Attendance> data;
 
-    ScheduleResponseModel({
+    AttendanceResponseModel({
         required this.data,
     });
 
-    factory ScheduleResponseModel.fromJson(String str) => ScheduleResponseModel.fromMap(json.decode(str));
+    factory AttendanceResponseModel.fromJson(String str) => AttendanceResponseModel.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
-    factory ScheduleResponseModel.fromMap(Map<String, dynamic> json) => ScheduleResponseModel(
-        data: List<Schedule>.from(json["data"].map((x) => Schedule.fromMap(x))),
+    factory AttendanceResponseModel.fromMap(Map<String, dynamic> json) => AttendanceResponseModel(
+        data: List<Attendance>.from(json["data"].map((x) => Attendance.fromMap(x))),
     );
 
     Map<String, dynamic> toMap() => {
         "data": List<dynamic>.from(data.map((x) => x.toMap())),
+    };
+}
+
+class Attendance {
+    final int id;
+    final int scheduleId;
+    final int studentId;
+    final String attendanceCode;
+    final String academicYear;
+    final String semester;
+    final String meeting;
+    final String status;
+    final String description;
+    final String latitude;
+    final String longitude;
+    final String score;
+    final String createdBy;
+    final String updatedBy;
+    final dynamic deletedBy;
+    final DateTime createdAt;
+    final DateTime updatedAt;
+    final Schedule schedule;
+
+    Attendance({
+        required this.id,
+        required this.scheduleId,
+        required this.studentId,
+        required this.attendanceCode,
+        required this.academicYear,
+        required this.semester,
+        required this.meeting,
+        required this.status,
+        required this.description,
+        required this.latitude,
+        required this.longitude,
+        required this.score,
+        required this.createdBy,
+        required this.updatedBy,
+        required this.deletedBy,
+        required this.createdAt,
+        required this.updatedAt,
+        required this.schedule,
+    });
+
+    factory Attendance.fromJson(String str) => Attendance.fromMap(json.decode(str));
+
+    String toJson() => json.encode(toMap());
+
+    factory Attendance.fromMap(Map<String, dynamic> json) => Attendance(
+        id: json["id"],
+        scheduleId: json["schedule_id"],
+        studentId: json["student_id"],
+        attendanceCode: json["attendance_code"],
+        academicYear: json["academic_year"],
+        semester: json["semester"],
+        meeting: json["meeting"],
+        status: json["status"],
+        description: json["description"],
+        latitude: json["latitude"],
+        longitude: json["longitude"],
+        score: json["score"],
+        createdBy: json["created_by"],
+        updatedBy: json["updated_by"],
+        deletedBy: json["deleted_by"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        schedule: Schedule.fromMap(json["schedule"]),
+    );
+
+    Map<String, dynamic> toMap() => {
+        "id": id,
+        "schedule_id": scheduleId,
+        "student_id": studentId,
+        "attendance_code": attendanceCode,
+        "academic_year": academicYear,
+        "semester": semester,
+        "meeting": meeting,
+        "status": status,
+        "description": description,
+        "latitude": latitude,
+        "longitude": longitude,
+        "score": score,
+        "created_by": createdBy,
+        "updated_by": updatedBy,
+        "deleted_by": deletedBy,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "schedule": schedule.toMap(),
     };
 }
 
@@ -113,7 +201,6 @@ class Subject {
     final String image;
     final DateTime createdAt;
     final DateTime updatedAt;
-    final Lecturer lecturer;
 
     Subject({
         required this.id,
@@ -128,7 +215,6 @@ class Subject {
         required this.image,
         required this.createdAt,
         required this.updatedAt,
-        required this.lecturer,
     });
 
     factory Subject.fromJson(String str) => Subject.fromMap(json.decode(str));
@@ -148,7 +234,6 @@ class Subject {
         image: json["image"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        lecturer: Lecturer.fromMap(json["lecturer"]),
     );
 
     Map<String, dynamic> toMap() => {
@@ -162,71 +247,6 @@ class Subject {
         "field": field,
         "description": description,
         "image": image,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-        "lecturer": lecturer.toMap(),
-    };
-}
-
-class Lecturer {
-    final int id;
-    final String name;
-    final String email;
-    final String roles;
-    final dynamic phone;
-    final dynamic address;
-    final DateTime emailVerifiedAt;
-    final dynamic twoFactorSecret;
-    final dynamic twoFactorRecoveryCodes;
-    final dynamic twoFactorConfirmedAt;
-    final DateTime createdAt;
-    final DateTime updatedAt;
-
-    Lecturer({
-        required this.id,
-        required this.name,
-        required this.email,
-        required this.roles,
-        required this.phone,
-        required this.address,
-        required this.emailVerifiedAt,
-        required this.twoFactorSecret,
-        required this.twoFactorRecoveryCodes,
-        required this.twoFactorConfirmedAt,
-        required this.createdAt,
-        required this.updatedAt,
-    });
-
-    factory Lecturer.fromJson(String str) => Lecturer.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
-
-    factory Lecturer.fromMap(Map<String, dynamic> json) => Lecturer(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        roles: json["roles"],
-        phone: json["phone"],
-        address: json["address"],
-        emailVerifiedAt: DateTime.parse(json["email_verified_at"]),
-        twoFactorSecret: json["two_factor_secret"],
-        twoFactorRecoveryCodes: json["two_factor_recovery_codes"],
-        twoFactorConfirmedAt: json["two_factor_confirmed_at"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-    );
-
-    Map<String, dynamic> toMap() => {
-        "id": id,
-        "name": name,
-        "email": email,
-        "roles": roles,
-        "phone": phone,
-        "address": address,
-        "email_verified_at": emailVerifiedAt.toIso8601String(),
-        "two_factor_secret": twoFactorSecret,
-        "two_factor_recovery_codes": twoFactorRecoveryCodes,
-        "two_factor_confirmed_at": twoFactorConfirmedAt,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };

@@ -24,6 +24,7 @@ class Course {
     final int id;
     final String title;
     final String subtitle;
+    // ignore: non_constant_identifier_names
     final String CourseClass;
     final String time;
     final String image;
@@ -35,6 +36,7 @@ class Course {
         required this.id,
         required this.title,
         required this.subtitle,
+        // ignore: non_constant_identifier_names
         required this.CourseClass,
         required this.time,
         required this.image,
