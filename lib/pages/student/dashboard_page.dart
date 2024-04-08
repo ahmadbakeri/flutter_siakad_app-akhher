@@ -4,9 +4,9 @@ import '../../bloc/users/users_bloc.dart';
 import '../../common/constants/colors.dart';
 import '../../common/constants/images.dart';
 import '../../common/widgets/menu_card.dart';
+import '../subject/subject_schedule_page.dart';
 import 'course_grade_page.dart';
-import 'course_schedule_page.dart';
-import 'grade_page.dart';
+import '../subject/subject_detail_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -55,7 +55,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GradePage(
+                            builder: (context) => CourseGradePage(
                               name: user.name,
                               role: user.roles,
                             ),
@@ -71,7 +71,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CourseGradePage(
+                            builder: (context) => SubjectAttendancePage(
                               name: user.name,
                               role: user.roles,
                             ),

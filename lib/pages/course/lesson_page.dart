@@ -53,24 +53,19 @@ class LessonPage extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: LessonData(
-                        author: subject.lecturer.name,
-                        time: '${subject.time} min',
-                        field: ' ${subject.field}'),
-                  ),
+                  LessonData(
+                      author: subject.lecturer.name,
+                      time: '${subject.time} min',
+                      field: ' ${subject.field}'),
                   const SizedBox(height: 10),
+                  const Divider(),
+                  const SizedBox(height: 20),
                   SmallText(
                     text: subject.description,
                     maxLines: 1000,
                   ),
                   const SizedBox(height: 20),
-                  Container(
-                    width: double.maxFinite,
-                    height: 1,
-                    color: Colors.grey[300],
-                  ),
+                  const Divider(),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

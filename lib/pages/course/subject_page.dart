@@ -83,7 +83,7 @@ class SubjectPage extends StatelessWidget {
                                 const SizedBox(height: 5),
                                 SubjectData(
                                   author: subjects[index].lecturer.name,
-                                  time: '${subjects[index].time} m',
+                                  time: subjects[index].time,
                                 ),
                               ],
                             ),

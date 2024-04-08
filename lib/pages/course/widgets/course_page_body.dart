@@ -82,12 +82,12 @@ class _CoursePageBodyState extends State<CoursePageBody> {
             ],
           ),
         ),
-        Container(
+        SizedBox(
           // color: Colors.redAccent,
           height: 280,
           child: PageView.builder(
             controller: pageController,
-            itemCount: 5,
+            itemCount: 3,
             itemBuilder: (context, position) {
               return _buildPageItem(position);
             },
@@ -271,14 +271,17 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: index.isEven ? const Color(0xFF69c5df) : const Color(0xFF9294cc),
+                    color: index.isEven
+                        ? const Color(0xFF69c5df)
+                        : const Color(0xFF9294cc),
                   ),
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     height: 110,
-                    margin: const EdgeInsets.only(bottom: 10, left: 30, right: 30),
+                    margin:
+                        const EdgeInsets.only(bottom: 10, left: 30, right: 30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white,
@@ -305,10 +308,15 @@ class _CoursePageBodyState extends State<CoursePageBody> {
           },
           loaded: (data) {
             return GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return TopLessonPage(subject: data[index].subject);
-                },),);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return TopLessonPage(subject: data[index].subject);
+                    },
+                  ),
+                );
               },
               child: Stack(
                 children: [
@@ -329,8 +337,8 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       height: 110,
-                      margin:
-                          const EdgeInsets.only(bottom: 10, left: 30, right: 30),
+                      margin: const EdgeInsets.only(
+                          bottom: 10, left: 30, right: 30),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                         color: Colors.white,
@@ -363,6 +371,7 @@ class _CoursePageBodyState extends State<CoursePageBody> {
                             SmallText(text: data[index].subject.subtitle),
                             const SizedBox(height: 5),
                             SubjectData(
+                              width: 160,
                               author: data[index].subject.lecturer.name,
                               time: data[index].subject.time,
                             ),

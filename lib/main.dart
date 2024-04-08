@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
-import 'bloc/bloc/attendances_bloc.dart';
+import 'bloc/attendances/attendances_bloc.dart';
 import 'bloc/grades/grades_bloc.dart';
 import 'bloc/toplists/toplists_bloc.dart';
 import 'bloc/courses/courses_bloc.dart';

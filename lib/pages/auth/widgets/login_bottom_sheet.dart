@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_siakad_app/bloc/login/login_bloc.dart';
-import 'package:flutter_siakad_app/data/datasources/auth_local_datasource.dart';
-import 'package:flutter_siakad_app/data/models/request/auth_request_model.dart';
-import 'package:flutter_siakad_app/pages/student/student_page.dart';
-
+import '../../../bloc/login/login_bloc.dart';
+import '../../../data/datasources/auth_local_datasource.dart';
+import '../../../data/models/request/auth_request_model.dart';
+import '../../../pages/student/student_page.dart';
 import '../../../common/widgets/buttons.dart';
 import '../../../common/widgets/custom_text_field.dart';
 import '../../../common/constants/colors.dart';

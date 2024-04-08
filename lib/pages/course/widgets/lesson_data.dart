@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../common/widgets/small_text.dart';
 
 class LessonData extends StatelessWidget {
@@ -16,7 +15,7 @@ class LessonData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Row(
           children: [
@@ -24,12 +23,14 @@ class LessonData extends StatelessWidget {
             SmallText(text: ' $author'),
           ],
         ),
+        const SizedBox(width: 10),
         Row(
           children: [
             const Icon(Icons.access_time_rounded, size: 11),
             SmallText(text: ' $time'),
           ],
         ),
+        const SizedBox(width: 10),
         Row(
           children: [
             const Icon(Icons.category, size: 11),

@@ -67,11 +67,7 @@ class _ItemPageState extends State<ItemPage> {
                 const SizedBox(height: 10),
                 BigText(text: widget.title),
                 const SizedBox(height: 10),
-                Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20),
-                  height: 2,
-                  color: Colors.grey[400],
-                ),
+                const Divider(),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Padding(
@@ -87,8 +83,7 @@ class _ItemPageState extends State<ItemPage> {
                 ),
                 Link(
                   target: LinkTarget.blank,
-                  uri: Uri.parse(
-                      widget.gdriveLink),
+                  uri: Uri.parse(widget.gdriveLink),
                   builder: (context, followLink) {
                     return InkWell(
                       onTap: followLink,

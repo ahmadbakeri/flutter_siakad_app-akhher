@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../common/constants/colors.dart';
-import '../models/course_schedule_model.dart';
+import '../../student/models/course_schedule_model.dart';
 
 class CourseScheduleTile extends StatelessWidget {
   final CourseScheduleModel data;

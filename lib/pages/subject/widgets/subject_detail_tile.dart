@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import '../../../common/constants/colors.dart';
 import '../../../common/widgets/row_text.dart';
-import '../models/course_grade_model.dart';
+import '../../student/models/course_grade_model.dart';
 
 class CourseGradeTile extends StatelessWidget {
   final String name;
@@ -28,7 +27,7 @@ class CourseGradeTile extends StatelessWidget {
           leading: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(50.0)),
             child: Image.network(
-              'https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2021/12/15/1405406409.jpg',
+              'https://avatars.githubusercontent.com/u/147062436',
               width: 40,
               height: 40,
               fit: BoxFit.cover,

@@ -4,9 +4,9 @@ import '../../bloc/schedules/schedules_bloc.dart';
 import '../../common/extensions/date_time_ext.dart';
 import '../../common/constants/images.dart';
 import '../../common/widgets/custom_scaffold.dart';
-import 'models/course_schedule_model.dart';
-import 'widgets/course_schedule_tile.dart';
-import 'widgets/course_with_image.dart';
+import '../student/models/course_schedule_model.dart';
+import 'widgets/subject_schedule_tile.dart';
+import 'widgets/subject_with_image.dart';
 
 class CourseSchedulePage extends StatefulWidget {
   const CourseSchedulePage({super.key});
